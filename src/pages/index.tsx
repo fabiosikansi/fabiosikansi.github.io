@@ -1,110 +1,77 @@
-import React, { ReactElement, useState } from "react"
+import React from "react"
+import { graphql } from "gatsby"
 
-interface Props {}
+const Hero: React.FC<{}> = () => (
+  <div className="sm:text-center lg:text-left">
+    <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+      I'm
+      <br className="xl:hidden" />
+      <span className="text-teal-500 text-5xl md:text-6xl"> Fabio Sikansi</span>
+    </h2>
+    <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+      A software engineer and CTO @Neural Alpha. <br />
+      Based in London 🇬🇧, from 🇧🇷.
+    </p>
+  </div>
+)
 
-function Index(): ReactElement {
-  const [isMenuOpen, setMenuOpen] = useState(false)
+const Picture: React.FC<{ file: IndexData["file"] }> = ({ file }) =>
+  file ? (
+    <img
+      className="object-cover w-full h-full"
+      src={file.childImageSharp.fluid.src}
+      alt="Fabio Sikansi"
+    />
+  ) : null
+
+const Index: React.FC<{ data: IndexData }> = ({ data }) => {
+  console.log(data)
   return (
     <>
-      <div>
-        <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-          <div className="flex items-center flex-shrink-0 text-white mr-6">
+      <div className="bg-white">
+        <div className="max-w-screen-xl relative">
+          <div className="relative flex w-full justify-center items-center z-10 bg-white h-screen md:pl-20 md:w-7/12">
+            <Hero />
             <svg
-              className="fill-current h-8 w-8 mr-2"
-              width="54"
-              height="54"
-              viewBox="0 0 54 54"
-              xmlns="http://www.w3.org/2000/svg"
+              className="hidden md:block absolute right-0 inset-y-0 h-full w-64 text-white transform translate-x-1/2"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
             >
-              <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+              <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
-            <span className="font-semibold text-xl tracking-tight">
-              Gatsby TypeScript Tailwind CSS
-            </span>
-          </div>
-          <div className="block lg:hidden">
-            <button
-              onClick={() => {
-                setMenuOpen(isMenuOpen => !isMenuOpen)
-              }}
-              className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
-            >
-              <svg
-                className="fill-current h-3 w-3"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              </svg>
-            </button>
-          </div>
-          <div
-            className={`w-full ${
-              isMenuOpen ? "block" : "hidden"
-            } lg:block flex-grow lg:flex lg:items-center lg:w-auto`}
-          >
-            <div className="text-sm lg:flex-grow">
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-              >
-                Docs
-              </a>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-              >
-                Examples
-              </a>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-              >
-                Blog
-              </a>
-            </div>
-            <div>
-              <a
-                href="/"
-                className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-              >
-                Download
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <div className="container max-w-md mx-auto mt-10">
-        <div className="rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full"
-            src="https://tailwindcss.com/img/card-top.jpg"
-            alt="Sunset in the mountains"
-          />
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p className="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatibus quia, nulla! Maiores et perferendis eaque,
-              exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div className="px-6 py-4">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-              #photography
-            </span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-              #travel
-            </span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-              #winter
-            </span>
           </div>
         </div>
+        {data.file && (
+          <div className="hidden md:block md:absolute md:inset-y-0 md:right-0 md:w-1/2">
+            <Picture file={data.file} />
+          </div>
+        )}
       </div>
     </>
   )
 }
 
 export default Index
+
+interface IndexData {
+  file?: {
+    childImageSharp: {
+      fluid: {
+        src: string
+      }
+    }
+  }
+}
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "me.jpg" }) {
+      childImageSharp {
+        fluid(maxHeight: 800, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
