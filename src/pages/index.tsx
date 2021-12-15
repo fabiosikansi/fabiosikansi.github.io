@@ -9,7 +9,7 @@ const Hero: React.FC<{}> = () => (
       <span className="text-teal-500 text-5xl md:text-6xl"> Fabio Sikansi</span>
     </h2>
     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-      A software engineer and CTO @Neural Alpha. <br />
+      Senior software engineer @FinancialTimes<br />
       Based in London 🇬🇧, from 🇧🇷.
     </p>
   </div>
